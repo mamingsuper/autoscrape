@@ -25,9 +25,8 @@ jobs:
       
     - name: Run Scrapy Crawl
       run: |
-        cd weibo  
-        scrapy crawl search
-        cd ..
+        cd weibo   # 更改为你的scrapy项目路径
+        scrapy crawl search  # 更改为你的爬虫名字
         
     - name: Set up Git
       run: |
@@ -36,6 +35,6 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git add -A
+        git add -A   # 添加所有改动的文件
         git commit -m "Add crawled data" || echo "No changes to commit"
-        git push https://${{secrets.PERSONAL_ACCESS_TOKEN}}@github.com/${{github.repository}}.git || true
+        git push https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git || true
