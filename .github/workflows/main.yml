@@ -27,3 +27,18 @@ jobs:
       run: |
         cd weibo   # 更改为你的scrapy项目路径
         scrapy crawl search  # 更改为你的爬虫名字
+        
+    - name: Set up Git
+      run: |
+        git config --global user.name 'mamingsuper'
+        git config --global user.email 'mamingsuper0719@163.com'
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "Add crawled data"
+        if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+        else
+            git push https://${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
+        fi
