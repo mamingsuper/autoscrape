@@ -36,6 +36,6 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git add -A   # 添加所有改动的文件
-        git commit -m "Add crawled data" || echo "No changes to commit"  # 如果没有需要提交的改动，此命令将失败，但这不应该导致整个步骤失败
-        git push https://${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git || true  # 如果没有需要提交的改动，此命令将失败，但这不应该导致整个步骤失败
+        git add -A
+        git commit -m "Add crawled data" || echo "No changes to commit"
+        git push https://${{secrets.PERSONAL_ACCESS_TOKEN}}@github.com/${{github.repository}}.git || true
